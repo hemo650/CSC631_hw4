@@ -1,3 +1,11 @@
+/*
+MODIFIED PLAYER CLASS 
+CREATED FOR HW4 
+This class is modified from the original WOB
+to showcase understanding of WOB code.
+Remove unused reference 'money '
+May not be used in Infection created by Tony and Ibrahim.
+ */
 package model;
 
 // Other Imports
@@ -14,19 +22,17 @@ public class Player {
     private String username;
     private String password;
     private short level;
-    private int money;
     private GameClient client; // References GameClient instance
 
     public Player(int player_id) {
         this.player_id = player_id;
     }
 
-    public Player(int player_id, String username, String password, short level, int money) {
+    public Player(int player_id, String username, String password, short level) {
         this.player_id = player_id;
         this.username = username;
         this.password = password;
         this.level = level;
-        this.money = money;
     }
 
     public int getID() {
@@ -61,14 +67,6 @@ public class Player {
         this.level = level;
     }
 
-    public int getMoney() {
-        return money;
-    }
-
-    public void setMoney(int money) {
-        this.money = money;
-    }
-
     public GameClient getClient() {
         return client;
     }
@@ -84,7 +82,6 @@ public class Player {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", level=" + level +
-                ", money=" + money +
                 '}';
     }
 }
