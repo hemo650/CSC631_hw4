@@ -1,12 +1,22 @@
+/*
+MODIFIED GAMEREQUESTTABLE CLASS 
+CREATED FOR HW4 
+This class is modified from the original WOB
+to showcase understanding of WOB code.
+Incorporated and defined new protocols
+May not be used in Infection modified by Tony and Ibrahim
+ */
 package metadata;
 
 // Java Imports
+
+import networking.request.GameRequest;
+import utility.Log;
+
 import java.util.HashMap;
 import java.util.Map;
 
 // Other Imports
-import networking.request.GameRequest;
-import utility.Log;
 
 /**
  * The GameRequestTable class stores a mapping of unique request code numbers
@@ -22,9 +32,12 @@ public class GameRequestTable {
     public static void init() {
         // Populate the table using request codes and class names
         add(Constants.CMSG_AUTH, "RequestLogin");
+        add(Constants.CMSG_LOBBY, "RequestLobby");
         add(Constants.CMSG_HEARTBEAT, "RequestHeartbeat");
         add(Constants.CMSG_PLAYERS, "RequestPlayers");
         add(Constants.CMSG_TEST, "RequestTest");
+        add(Constants.CMSG_REG, "RequestRegister");
+        add(Constants.CMSG_STATUS, "RequestGameStatus");
     }
 
     /**

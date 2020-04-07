@@ -4,7 +4,7 @@ CREATED FOR HW4
 This class is modified from the original WOB
 to showcase understanding of WOB code.
 Remove unused reference 'money '
-May not be used in Infection created by Tony and Ibrahim.
+May not be used in Infection modified by Tony
  */
 package model;
 

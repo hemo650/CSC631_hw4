@@ -1,3 +1,12 @@
+/*
+MODIFIED CONSTANTS CLASS 
+CREATED FOR HW4 
+This class is modified from the original WOB
+to showcase understanding of WOB code.
+Incorporated and defined new protocols
+May not be used in Infection modified by Tony
+ */
+
 package metadata;
 
 /**
@@ -14,21 +23,15 @@ public class Constants {
     public final static short SMSG_PLAYERS = 203;
     public static final short CMSG_TEST = 104;
     public static final short SMSG_TEST = 204;
+    public static final short SMSG_LOBBY = 105;
+    public static final short CMSG_LOBBY = 205;
+    public final static short CMSG_REG = 206;
+    public final static short SMSG_REG = 206;
+    public final static short CMSG_STATUS = 207;
+    public final static short SMSG_STATUS = 207;
 
-    // Organism Type
-    public static final short ORGANISM_TYPE_ANIMAL = 0;
-    public static final short ORGANISM_TYPE_PLANT = 1;
-    // Parameter Type
-    public static final short PARAMETER_K = 0;	//Plants Carrying capacity >0
-    public static final short PARAMETER_R = 1;	//Plants Growth rate 0-1
-    public static final short PARAMETER_X = 2;	//Plants Metabolic rate 0-1
-    public static final short PARAMETER_X_A = 3;	//Animals
-    public static final short PARAMETER_E = 4; //Animals assimilationEfficiency
-    public static final short PARAMETER_D = 5; //Animals predatorInterference
-    public static final short PARAMETER_Q = 6; //Animals functionalResponseControl
-    public static final short PARAMETER_A = 7; //Animals relativeHalfSaturationDensity
+
     // Other
-    public static final float BIOMASS_SCALE = 1000;
     public static final String CLIENT_VERSION = "1.00";
     public static final int TIMEOUT_SECONDS = 90;
     public static final String CSV_SAVE_PATH = "src/log/";
