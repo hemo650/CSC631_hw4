@@ -1,3 +1,10 @@
+/*
+MODIFIED LOGIN REQUEST
+CREATED FOR HW4 
+This class is modified from the original WOB
+to showcase understanding of WOB code. May not 
+be used in Infection created by Tony and Ibrahim.
+ */
 package networking.request;
 
 // Java Imports
@@ -39,49 +46,44 @@ public class RequestLogin extends GameRequest {
 
     @Override
     public void doBusiness() throws Exception {
-        Log.printf("User '%s' is connecting...", user_id);
+        Log.printf("%Connecting to user '%s'",  user_id);
         Player player = null;
-        // Checks if the connecting client meets the minimum version required
         if (version.compareTo(Constants.CLIENT_VERSION) >= 0) {
-            if (!user_id.isEmpty()) {
-                // Verification Needed
-                //player = UsersDAO.getUserFromDbIfCredentialsAreValid(user_id, password);
-                // Let's make a fake user for showing a connection demo -- without proper DB set tup.
-                Log.printf("User '%s' entered passwd '%s'", user_id, password);
-                if(user_id.equals("ilmi") && password.equals("1111"))
-                    player = new Player(100, "ilmi", "1111", (short) 1, 1000);
-                else
+            if (! user_id.isEmpty()) {
+                if ( user_id.equalsIgnoreCase("test") && password.equals("test")) {
+                    player = new Player(100, "test", "test", (short) 1);
+                } else {
                     player = null;
-            }
-            if (player == null) {
-                responseLogin.setStatus((short) 1); // User info is incorrect
-                Log.printf("User '%s' has failed to log in.", user_id);
-            } else {
-                player.setClient(client);
-                if (client.getPlayer() == null || player.getID() != client.getPlayer().getID()) {
-                    GameClient thread = GameServer.getInstance().getThreadByPlayerID(player.getID());
-                    // If account is already in use, remove and disconnect the client
-                    if (thread != null) {
-                        responseLogin.setStatus((short) 2); // Account is in use
-                        thread.removePlayerData();
-                        thread.newSession();
-                        Log.printf("User '%s' account is already in use.", user_id);
-                    } else {
-                        // Continue with the login process
-                        GameServer.getInstance().setActivePlayer(player);
-                        player.setClient(client);
-                        // Pass Player reference into thread
-                        client.setPlayer(player);
-                        // Set response information
-                        responseLogin.setStatus((short) 0); // Login is a success
-                        responseLogin.setPlayer(player);
-                        Log.printf("User '%s' has successfully logged in.", player.getUsername());
+                }
+                if (player == null) {
+                    responseLogin.setStatus((short) 1);
+                    Log.printf("User: '%s' has incorrect credentials");
+                } else {
+                    player.setClient(client);
+                    //TODO: Refactor playerID as user_id
+                    if (client.getPlayer() == null || !player.get user_id().equals(client.getPlayer().get user_id())) {
+                        GameClient thread = GameServer.getInstance().getThreadByPlayerID(player.getID());
+                        if (thread != null) {
+                            responseLogin.setStatus((short) 2); // Account is in use
+                            thread.removePlayerData();
+                            thread.newSession();
+                            Log.printf(" User '%s's account is already in use.",  user_id);
+                        } else {
+                            GameServer.getInstance().setActivePlayer(player);
+                            player.setClient(client);
+                            client.setPlayer(player);
+                            responseLogin.setStatus((short) 0); // Login is a success
+                            responseLogin.setPlayer(player);
+                            Log.printf("User '%s' has successfully logged in.", player.get user_id());
+                        }
                     }
                 }
             }
-        } else {
-            responseLogin.setStatus((short) 3); // Client version not compatible
-            Log.printf("User '%s' has failed to log in. (v%s)", player.getUsername(), version);
-        }
+            } else {
+                responseLogin.setStatus((short) 3); // Client version not compatible
+                Log.printf("User '%s' has failed to log in. (v%s)", player.get user_id(), version);
+            }
+
     }
+
 }

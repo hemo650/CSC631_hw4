@@ -1,5 +1,5 @@
 /*
-MODIFIED LOGIN RESPONSE
+NEW REGISTER RESPONSE
 CREATED FOR HW4 
 This class is modified from the original WOB
 to showcase understanding of WOB code. May not 
@@ -7,23 +7,16 @@ be used in Infection created by Tony and Ibrahim.
  */
 package networking.response;
 
-// Other Imports
 import metadata.Constants;
 import model.Player;
 import utility.GamePacket;
 
-/**
- * The ResponseLogin class contains information about the authentication
- * process.
- */
-public class ResponseLogin extends GameResponse {
+public class ResponseRegister extends GameResponse {
 
     private short status;
     private Player player;
-    //retrieves response login constraint and can be modified for another game 
-    //for example if needed to for our game it would be public responseLoginIN
-    //IN short for Infection 
-    public ResponseLogin() {
+
+    public ResponseRegister() {
         responseCode = Constants.SMSG_AUTH;
     }
 
@@ -34,8 +27,8 @@ public class ResponseLogin extends GameResponse {
         if (status == 0) {
             packet.addInt32(player.getID());
             packet.addString(player.getUsername());
-            packet.addInt32(player.getMoney());
-            packet.addShort16(player.getLevel());
+            packet.addString(player.getPassword());
+
         }
         return packet.getBytes();
     }
@@ -47,4 +40,3 @@ public class ResponseLogin extends GameResponse {
     public void setPlayer(Player player) {
         this.player = player;
     }
-}
