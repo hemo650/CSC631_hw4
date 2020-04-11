@@ -1,3 +1,11 @@
+/*
+MODIFIED CONSTANTS CLASS 
+CREATED FOR HW4 
+This class is modified from the original WOB
+to showcase understanding of WOB code.
+Incorporated and defined new protocols
+May not be used in Infection modified by Ibrahim
+ */
 public class Constants {
 	
 	// Constants
@@ -14,6 +22,13 @@ public class Constants {
 	public static readonly short SMSG_PLAYERS = 203;
 	public static readonly short CMSG_TEST = 104;
 	public static readonly short SMSG_TEST = 204;
+	public static readonly short CMSG_LOBBY = 105;
+	public static readonly short SMSG_LOBBY = 205;
+	public static readonly short CMSG_REGISTER = 106;
+	public static readonly short SMSG_REGISTER = 206;
+	public static readonly short CMSG_GM_STATUS = 107;
+	public static readonly short SMSG_GM_STATUS = 207;
+	
 	
 	// Other
 	public static readonly string IMAGE_RESOURCES_PATH = "Images/";
